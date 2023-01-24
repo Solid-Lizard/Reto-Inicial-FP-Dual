@@ -9,8 +9,6 @@
 <div align="center">
 <h1 class="d-center text-light"> Language	list </h1>
 
- <a th:href = "@{/createLanguage}" class="btn btn-primary" style="margin: 10px;"> Create Language </a>
-
 </div>
 
 <div class="d-flex">
@@ -22,6 +20,7 @@
 				<th scope="col"> Language ID </th>
 				<th scope="col"> Language name </th>
 				<th scope="col"> Language message </th>
+				<th scope="col"> Actions </th>
 			</tr>
 		</thead>
 		
@@ -30,12 +29,22 @@
 				<td th:text="${language.getId}"></td>
 				<td th:text="${language.getName}"></td>
 				<td th:text="${language.getMessage}"></td>
+				<td>
+					<a th:href = "@{/updateLanguage/{id}(id= ${language.id})}" class="btn btn-primary text-light"> Update  </a>
+					<a th:href = "@{/deleteLanguage/{id}(id= ${language.id})}" class="btn btn-danger text-light"> Delete  </a>
+				</td>
 			</tr>
 		</tbody>
 	
 	</table>
 	
  </div>
+ 
+ <div align="center">
+
+ <a th:href = "@{/createLanguage}" class="btn btn-primary text-light" style="margin: 10px;"> Create Language </a>
+
+</div>
  
 
  

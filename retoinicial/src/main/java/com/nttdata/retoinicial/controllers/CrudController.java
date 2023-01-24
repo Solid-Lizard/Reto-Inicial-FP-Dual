@@ -6,14 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nttdata.retoinicial.repository.Language;
 import com.nttdata.retoinicial.services.LanguageManagementServiceI;
-
 
 /**
  * 
@@ -61,7 +58,7 @@ public class CrudController {
 	 * @param message
 	 * @param id
 	 * 
-	 * @return String - Mensaje que informa si el idioma se ha creado satisfactoriamente o no
+	 * @return String - Devuelve al usuario a la página de lista de idiomas
 	 * 
 	 */
 	@GetMapping("/createLanguage")
@@ -74,10 +71,41 @@ public class CrudController {
 		
 	}
 	
+	@GetMapping("/updateLanguage/{id}")
+	public String updateLanguage(@PathVariable int id, Model model) {
+		model.addAttribute("language", languageService.searchById(id));
+		return "update_language";
+	}
+	
+	@PostMapping("/editLanguage/{id}")
+	public String editLanguage(@PathVariable int id,
+			@ModelAttribute("language") Language language,
+			Model model) {
+		
+		// Recuperamos el idioma de la BDD, modificamos sus parámetros
+		Language l = languageService.searchById(id);
+		l.setId(language.getId());
+		l.setName(language.getName());
+		l.setMessage(language.getMessage());
+		
+		// Almacenamos el idioma actualizado nuevamente en la BDD
+		languageService.update(l);
+				
+		return "redirect:/languageList";
+		
+	}
+	
 	@PostMapping("/saveLanguage")
 	public String saveLanguage (@ModelAttribute("language") Language language) {
 		languageService.create(language);
-		return "redirect:/";
+		return "redirect:/languageList";
+	}
+	
+	@GetMapping ("/deleteLanguage/{id}")
+	public String deleteStudent(@PathVariable int id) {
+		Language l = languageService.searchById(id);
+		languageService.delete(l);
+		return "redirect:/languageList";
 	}
 
 }
