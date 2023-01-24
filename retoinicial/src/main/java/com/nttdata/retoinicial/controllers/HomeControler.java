@@ -20,7 +20,7 @@ import com.nttdata.retoinicial.services.LanguageManagementServiceI;
  *
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping("/home")
 public class HomeControler {
 	@Autowired
 	LanguageManagementServiceI languageService;

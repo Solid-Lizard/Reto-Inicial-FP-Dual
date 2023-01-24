@@ -30,8 +30,8 @@
 				<td th:text="${language.getName}"></td>
 				<td th:text="${language.getMessage}"></td>
 				<td>
-					<a th:href = "@{/updateLanguage/{id}(id= ${language.id})}" class="btn btn-primary text-light"> Update  </a>
-					<a th:href = "@{/deleteLanguage/{id}(id= ${language.id})}" class="btn btn-danger text-light"> Delete  </a>
+					<a th:href = "@{/languages/updateLanguage/{id}(id= ${language.id})}" class="btn btn-primary text-light"> Update  </a>
+					<a th:href = "@{/languages/deleteLanguage/{id}(id= ${language.id})}" class="btn btn-danger text-light"> Delete  </a>
 				</td>
 			</tr>
 		</tbody>
@@ -42,7 +42,7 @@
  
  <div align="center">
 
- <a th:href = "@{/createLanguage}" class="btn btn-primary text-light" style="margin: 10px;"> Create Language </a>
+ <a th:href = "@{/languages/createLanguage}" class="btn btn-primary text-light" style="margin: 10px;"> Create Language </a>
 
 </div>
  

@@ -10,6 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.nttdata.retoinicial.repository.Language;
 import com.nttdata.retoinicial.services.LanguageManagementServiceI;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 
 /**
  * 
@@ -19,6 +21,7 @@ import com.nttdata.retoinicial.services.LanguageManagementServiceI;
  *
  */
 @SpringBootApplication
+@EnableSwagger2
 public class RetoinicialApplication implements CommandLineRunner{
 	// ATRIBUTOS //
 	/**

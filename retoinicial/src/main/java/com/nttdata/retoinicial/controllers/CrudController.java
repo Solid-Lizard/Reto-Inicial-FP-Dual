@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nttdata.retoinicial.repository.Language;
 import com.nttdata.retoinicial.services.LanguageManagementServiceI;
@@ -23,6 +24,7 @@ import com.nttdata.retoinicial.services.LanguageManagementServiceI;
  *
  */
 @Controller
+@RequestMapping("/languages")
 public class CrudController {
 	// ATRIBUTOS //
 	/**
@@ -91,21 +93,21 @@ public class CrudController {
 		// Almacenamos el idioma actualizado nuevamente en la BDD
 		languageService.update(l);
 				
-		return "redirect:/languageList";
+		return "redirect:/languages/languageList";
 		
 	}
 	
 	@PostMapping("/saveLanguage")
 	public String saveLanguage (@ModelAttribute("language") Language language) {
 		languageService.create(language);
-		return "redirect:/languageList";
+		return "redirect:/languages/languageList";
 	}
 	
 	@GetMapping ("/deleteLanguage/{id}")
 	public String deleteStudent(@PathVariable int id) {
 		Language l = languageService.searchById(id);
 		languageService.delete(l);
-		return "redirect:/languageList";
+		return "redirect:/languages/languageList";
 	}
 
 }

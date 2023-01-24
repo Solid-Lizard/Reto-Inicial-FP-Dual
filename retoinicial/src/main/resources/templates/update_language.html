@@ -12,7 +12,7 @@
 </div>
 
 <div>
-	<form th:action="@{/editLanguage/{id} (id=${language.id})}" th:object = "${language}" method = "POST">
+	<form th:action="@{/languages/editLanguage/{id} (id=${language.id})}" th:object = "${language}" method = "POST">
 		<div class="form-group" style="margin-left: 30px; margin-right: 30px;">
 			<label class="text-light"> Language name </label>
 			<input 
