@@ -4,11 +4,15 @@ import java.util.Collections;
 
 //IMPORTS //
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.nttdata.retoinicial.repository.Language;
 import com.nttdata.retoinicial.services.LanguageManagementServiceI;
@@ -27,6 +31,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @author Santiago Lopez Arredondo
  *
  */
+
 @SpringBootApplication
 @EnableSwagger2
 public class RetoinicialApplication implements CommandLineRunner{
@@ -127,5 +132,21 @@ public class RetoinicialApplication implements CommandLineRunner{
 				"https://github.com/Solid-Lizard/Reto-Inicial-FP-Dual", 
 				Collections.emptyList());
 	}
+	
+	
 
+}
+
+@RefreshScope
+@RestController
+class MessageRestController {
+
+  @Value("${message:Hello default}")
+  private String message;
+
+  @RequestMapping("/message")
+  String getMessage() {
+    return this.message;
+  }
+  
 }
