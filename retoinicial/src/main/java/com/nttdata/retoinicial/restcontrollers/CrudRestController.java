@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nttdata.retoinicial.repository.Language;
 import com.nttdata.retoinicial.services.LanguageManagementServiceI;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
 
 @RestController
 @RequestMapping("/rest")
@@ -28,13 +31,20 @@ public class CrudRestController {
 	// CRUD //
 	
 	// Create //
+	@ApiOperation(
+			value = "Crea un idioma pasado por parámetros",
+			notes = "Proporciona un Idioma para poder crearlo en la BDD"
+			)
+	
 	@PostMapping("/languages")
-	public Language newLanguage(@RequestBody Language l) {
+	public Language newLanguage(@ApiParam (value = "Idioma que se almacenará en la BDD") @RequestBody Language l) {
 		languageService.create(l);
 		return l;
 	}
 	
+	
 	// Read //
+	
 	@GetMapping("/languages")
 	public List<Language> all() {
 		return languageService.searchAll();
@@ -43,6 +53,11 @@ public class CrudRestController {
 	@GetMapping("/searchById/{id}")
 	public Language findById(@PathVariable int id) {
 		return languageService.searchById(id);
+	}
+	
+	@GetMapping("/searchByMssg/{mssg}")
+	public Language findByMssg(@PathVariable String mssg) {
+		return languageService.searchByMessage(mssg);
 	}
 	
 	// Update //

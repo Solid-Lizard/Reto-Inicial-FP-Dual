@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 // IMPORTS //
 
 
@@ -20,8 +23,10 @@ import javax.persistence.Table;
  * @author Santiago López
  *
  */
+
 @Entity
 @Table (name="Languages")
+@ApiModel(description = "Información del idioma")
 public class Language implements Serializable{
 	// ATRIBUTOS //
 	/**
@@ -37,6 +42,7 @@ public class Language implements Serializable{
 	 * Atributo: Nombre del idioma
 	 * 
 	 */
+	@ApiModelProperty(notes = "Nombre del idioma")
 	@Column (name="Name")
 	private String name;
 	
@@ -46,6 +52,8 @@ public class Language implements Serializable{
 	 * su respectivo idioma
 	 * 
 	 */
+	
+	@ApiModelProperty(notes = "'Hola mundo' traducido al idioma")
 	@Column (name="Message")
 	private String message;
 	
@@ -54,6 +62,7 @@ public class Language implements Serializable{
 	 * Atributo: Id del idioma
 	 * 
 	 */
+	@ApiModelProperty(notes = "Número identificador del idioma")
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;

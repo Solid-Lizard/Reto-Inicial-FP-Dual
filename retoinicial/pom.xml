@@ -23,39 +23,50 @@
 	
 	<!-- Dependencias del proyecto -->
 	<dependencies>
+		<!--Dependencias jdbc -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>
 		</dependency>
 		<!-- Dependencias swagger-->
 		<dependency>
-		    <groupId>io.springfox</groupId>
-		    <artifactId>springfox-swagger2</artifactId>
-		    <version>3.0.0</version>
+	   	 	<groupId>io.springfox</groupId>
+	    	<artifactId>springfox-boot-starter</artifactId>
+	   	 	<version>3.0.0</version>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+
 		<dependency>
 		    <groupId>io.springfox</groupId>
 		    <artifactId>springfox-swagger-ui</artifactId>
 		    <version>3.0.0</version>
 		</dependency>
 
-		      
+		<!-- Dependencias para spring Data JPA -->      
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		
 		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		
+		<!-- Dependencias para thymeleaf -->
+		<dependency>
 	    	<groupId>org.springframework.boot</groupId>
 	    	<artifactId>spring-boot-starter-thymeleaf</artifactId>
 	    </dependency>
 
+		<!-- Spring dev tools -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -95,7 +106,26 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			<!-- PLUGIN AÑADIDO PARA RESOLVER PROBLEMAS CON ACTUATOR -->
+			 <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>        
+            </plugin>
+			
 		</plugins>
+		
+		<!-- AÑADIDO PARA QUE MAVEN CONSIGA DETECTAR EL FICHERO APPLICATION.PROPERTIES -->
+		<resources>     
+	        <resource>
+	            <directory>src/main/resources</directory>
+	            <includes>                      
+	                <include>**/*.properties</include>                  
+	            </includes>
+	        </resource>            
+    	</resources>
+		
+		
 	</build>
 
 </project>
