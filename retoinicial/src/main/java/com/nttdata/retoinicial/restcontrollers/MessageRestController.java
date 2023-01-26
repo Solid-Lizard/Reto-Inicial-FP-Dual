@@ -1,6 +1,9 @@
 package com.nttdata.retoinicial.restcontrollers;
 
 // IMPORTS //
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +25,13 @@ public class MessageRestController {
 	// ATRIBUTOS //
 	/**
 	 * 
+	 * LOGGER
+	 * 
+	 */
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	
+	/**
+	 * 
 	 * Almacena el mesnaje que se encuentra en el fichero .properties del repositorio
 	 * 
 	 */
@@ -41,8 +51,9 @@ public class MessageRestController {
 			)
   
   @RequestMapping("/message")
-  String getMessage() {
-    return this.message;
+  public String getMessage() {
+	  log.info("Mostrando saludo en el fichero .properties del repositorio github");
+	  return this.message;
   }
   
 }

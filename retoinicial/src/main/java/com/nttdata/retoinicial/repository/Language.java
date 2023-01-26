@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -31,6 +34,13 @@ public class Language implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * 
+	 * LOGGER
+	 * 
+	 */
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	// Mapeos //	
 	/**
@@ -74,6 +84,7 @@ public class Language implements Serializable{
 	 * 
 	 */
 	public String getName() {
+		log.info("Recuperando nombre del idioma: {}", name);
 		return name;
 	}
 
@@ -85,6 +96,7 @@ public class Language implements Serializable{
 	 * 
 	 */
 	public void setName(String name) {
+		log.info("Asignando nombre al idioma: {}", name);
 		this.name = name;
 	}
 
@@ -96,6 +108,7 @@ public class Language implements Serializable{
 	 * 
 	 */
 	public String getMessage() {
+		log.info("Recuperando mensaje de saludo del idioma: {}", message);
 		return message;
 	}
 
@@ -107,6 +120,7 @@ public class Language implements Serializable{
 	 * 
 	 */
 	public void setMessage(String mssg) {
+		log.info("Asignando mensaje de saludo al idioma: {}", mssg);
 		this.message = mssg;
 	}
 
@@ -118,6 +132,7 @@ public class Language implements Serializable{
 	 * 
 	 */
 	public int getId() {
+		log.info("Recuperando ID del idioma: {}", id);
 		return id;
 	}
 
@@ -129,13 +144,18 @@ public class Language implements Serializable{
 	 * 
 	 */
 	public void setId(int id) {
+		log.info("Asignando ID al idioma: {}", id);
 		this.id = id;
 	}
 
 	// To String //
 	@Override
 	public String toString() {
-		return "Language [name=" + name + ", message=" + message + ", id=" + id + "]";
+		String mssg = "Language [name=" + name + ", message=" + message + ", id=" + id + "]";
+		
+		log.info("Mostrando toda la información del idioma: {}", mssg);
+		
+		return mssg;
 	}
 	
 	

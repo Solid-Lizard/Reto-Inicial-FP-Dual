@@ -3,7 +3,9 @@ package com.nttdata.retoinicial;
 // IMPORTS //
 import java.util.Collections;
 
-//IMPORTS //
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.boot.CommandLineRunner;
@@ -36,6 +38,13 @@ public class RetoinicialApplication implements CommandLineRunner{
 	// ATRIBUTOS //
 	/**
 	 * 
+	 * LOGGER
+	 * 
+	 */
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	
+	/**
+	 * 
 	 * Servicio de gestion de idiomas
 	 * 
 	 * @see LanguageManagementServiceI
@@ -52,12 +61,15 @@ public class RetoinicialApplication implements CommandLineRunner{
 	 * @param args
 	 * 
 	 */
-	public static void main(String[] args) {		
+	public static void main(String[] args) {	
 		SpringApplication.run(RetoinicialApplication.class, args);
 	}
 
 	@Override
-	public void run(String... args) throws Exception {		
+	public void run(String... args) throws Exception {	
+		log.trace("--INICIO DE LA APLICACIÓN--");
+		
+		log.info("--INICIANDO CREACIÓN DE IDIOMAS--");
 		// Creación de idiomas //
 		Language l1 = new Language();
 		l1.setId(1);
@@ -78,12 +90,16 @@ public class RetoinicialApplication implements CommandLineRunner{
 		l4.setId(4);
 		l4.setMessage("Ciao mondo!");
 		l4.setName("ITA");
+		
+		log.info("--IDIOMAS CREADOS SATISFACTORIAMENTE--");
 
 		// Consumimos el servicio de gestión de idiomas //
+		log.info("--CONSUMIENDO SERVICIO DE GESTIÓN DE IDIOMAS PARA ALMACENARLOS EN LA BDD--");
 		languageService.create(l1);	
 		languageService.create(l2);
 		languageService.create(l3);
 		languageService.create(l4);
+		log.info("--SERVICIO DE GESTIÓN DE IDIMAS CONSUMIDO SATISFACTORIAMENTE--");
 		
 	}
 	

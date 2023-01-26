@@ -3,6 +3,8 @@ package com.nttdata.retoinicial.restcontrollers;
 // IMPORTS //
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +34,13 @@ public class CrudRestController {
 	// ATRIBUTOS //
 	/**
 	 * 
+	 * LOGGER
+	 * 
+	 */
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	
+	/**
+	 * 
 	 * Inyección del servicio de gestión de idiomas
 	 * 
 	 */
@@ -57,7 +66,10 @@ public class CrudRestController {
 	
 	@PostMapping("/languages")
 	public Language newLanguage(@ApiParam (value = "Idioma que se almacenará en la BDD") @RequestBody Language l) {
+		log.info("Consumiendo servicio de creación de clientes");
 		languageService.create(l);
+		log.info("Servicio consumido satisfactoriamente");
+		
 		return l;
 	}
 	
@@ -77,6 +89,7 @@ public class CrudRestController {
 	
 	@GetMapping("/languages")
 	public List<Language> all() {
+		log.info("Consumiendo servicio de búsqueda de idiomas");
 		return languageService.searchAll();
 	}
 	
@@ -96,6 +109,7 @@ public class CrudRestController {
 	
 	@GetMapping("/searchById/{id}")
 	public Language findById( @ApiParam (value = "Id del idioma deseado")  @PathVariable int id) {
+		log.info("Consumiendo servicio de búsqueda de idiomas");
 		return languageService.searchById(id);
 	}
 	
@@ -115,6 +129,7 @@ public class CrudRestController {
 	
 	@GetMapping("/searchByMssg/{mssg}")
 	public Language findByMssg(@ApiParam (value = "Mensaje de saludo del idioma deseado") @PathVariable String mssg) {
+		log.info("Consumiendo servicio de búsqueda de idiomas");
 		return languageService.searchByMessage(mssg);
 	}
 	
@@ -140,19 +155,29 @@ public class CrudRestController {
 			@ApiParam (value = "ID del idioma que queremos modificar") @PathVariable int id) {
 		
 		// Busca el idioma a actualizar en la BDD
+		log.info("Consumiendo servicio de búsqueda de idiomas");
 		Language l2 = languageService.searchById(id);
+		log.info("Servicio consumido satisfactoriamente");
 		
 		if (l2 != null) {
 			// Si se ha encontrado ese idioma, se actualizan sus datos
+			log.info("Actualizando propiedades del idioma");
 			l2.setName(l.getName());
 			l2.setMessage(l.getMessage());
+			log.info("Propiedades del idioma actualizadas");
 			
+			log.info("Consumiendo servicio de actualización de idioma");
 			languageService.update(l2);
+			log.info("Servicio consumido satisfactoriamente");
 			
 		} else {
 			// Si no se ha encontrado el idioma, se almacena el idioma dado en la BDD
+			log.error("El idioma que se está intentando actualizar no existe, creando un idioma con los datos proporcionados");
 			l.setId(id);
+			
+			log.info("Consumiendo servicio de creación de idiomas");
 			languageService.create(l2);
+			log.info("Servicio consumido satisfactoriamente");
 			
 		}
 		
@@ -175,7 +200,9 @@ public class CrudRestController {
 	
 	@DeleteMapping("/deleteLanguage/{id}")
 	public void deleteLanguage(@ApiParam (value = "ID del idioma que se desea eliminar") @PathVariable int id) {
+		log.info("Consumiendo servicios de búsqueda y eliminación de idiomas");
 		languageService.delete(languageService.searchById(id));
+		log.info("Servicios consumidos satisfactoriamente");
 	}
 	
 }
