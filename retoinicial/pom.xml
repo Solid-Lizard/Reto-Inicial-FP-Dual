@@ -129,7 +129,15 @@
 	            <includes>                      
 	                <include>**/*.properties</include>                  
 	            </includes>
-	        </resource>            
+	        </resource>    
+	        
+	        <resource>
+	            <directory>src/main/resources/templates</directory>
+	            <includes>                      
+	                <include>**/*.html</include>                  
+	            </includes>
+	        </resource>  
+	                
     	</resources>
 		
 		

@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.nttdata.retoinicial.repository.Language;
 import com.nttdata.retoinicial.services.LanguageManagementServiceI;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
 /**
  * 
- * Controlador para realizar operaciones CRUD contra la BDD, para ello consume el servicio
+ * Controlador para realizar operaciones CRUD contra la BDD mediante vistas, para ello consume el servicio
  * de gestión de idiomas.
  * 
  * @author Santiago López
@@ -43,9 +46,13 @@ public class CrudController {
 	 * 
 	 * @param model
 	 * 
-	 * @return
+	 * @return String - Página de lista de idiomas
 	 * 
 	 */
+	@ApiOperation(
+			value = "Muestra todos los idiomas existentes en la BDD"
+			)
+	
 	@GetMapping("/languageList")
 	public String viewLanguageList(Model model) {
 		model.addAttribute("listLanguages", languageService.searchAll());
@@ -54,15 +61,19 @@ public class CrudController {
 	
 	/**
 	 * 
-	 * Permite crear un idioma con los parámetros especificados por el usuario
+	 * Permite crear un idioma con los parámetros especificados en el modelo por el usuario
 	 * 
 	 * @param name
 	 * @param message
 	 * @param id
 	 * 
-	 * @return String - Devuelve al usuario a la página de lista de idiomas
+	 * @return String - Página de lista de idiomas
 	 * 
 	 */
+	@ApiOperation(
+			value = "Crea un idioma con los parametros especificados en la BDD"
+			)
+	
 	@GetMapping("/createLanguage")
 	public String createLanguage(Model m) {	
 		Language language = new Language();
@@ -73,14 +84,43 @@ public class CrudController {
 		
 	}
 	
+	/**
+	 * 
+	 * Devuelve la vista de actualzación de idiomas.
+	 * 
+	 * @param id - Id del idioma que será actualizado
+	 * @param model
+	 * 
+	 * @return String - Página de actualizar idioma
+	 * 
+	 */
+	@ApiOperation(
+			value = "Devuelve la vista de actualzación de idiomas."
+			)
+	
 	@GetMapping("/updateLanguage/{id}")
-	public String updateLanguage(@PathVariable int id, Model model) {
+	public String updateLanguage(@ApiParam("ID del idioma que se modificará") @PathVariable int id, Model model) {
 		model.addAttribute("language", languageService.searchById(id));
 		return "update_language";
 	}
 	
+	/**
+	 * 
+	 * Actualiza un idioma con los parámetros especificados en el modelo por el usuario
+	 * 
+	 * @param id - Id del idioma modificado
+	 * @param language - Contiene los nuevos datos del idioma a modificar.
+	 * @param model
+	 * 
+	 * @return String - Nos devuelve a la vista de lista de idiomas una vez terminado del proceso
+	 * 
+	 */
+	@ApiOperation(
+			value = "Actualiza un idioma con los parámetros especificados en el modelo por el usuario"
+			)
+	
 	@PostMapping("/editLanguage/{id}")
-	public String editLanguage(@PathVariable int id,
+	public String editLanguage(@ApiParam("Id del idioma que se modificará") @PathVariable int id,
 			@ModelAttribute("language") Language language,
 			Model model) {
 		
@@ -97,14 +137,40 @@ public class CrudController {
 		
 	}
 	
+	/**
+	 * 
+	 * Almacena un idioma dado por el usuario en la BDD
+	 * 
+	 * @param language
+	 * 
+	 * @return String - Página de lista de idiomas
+	 * 
+	 */
+	@ApiOperation(
+			value = "Almacena un idioma dado por el usuario"
+			)
+	
 	@PostMapping("/saveLanguage")
-	public String saveLanguage (@ModelAttribute("language") Language language) {
+	public String saveLanguage (@ApiParam("Idioma que se va a almacenar") @ModelAttribute("language") Language language) {
 		languageService.create(language);
 		return "redirect:/languages/languageList";
 	}
 	
+	/**
+	 * 
+	 * Elimina un idioma de la BDD en base a su ID
+	 * 
+	 * @param id
+	 * 
+	 * @return String - Página de lista de idiomas
+	 * 
+	 */
+	@ApiOperation(
+			value = "Elimina un idioma de la BDD en base a su ID, pasada por parámetros"
+			)
+	
 	@GetMapping ("/deleteLanguage/{id}")
-	public String deleteStudent(@PathVariable int id) {
+	public String deleteLanguage(@ApiParam("ID del idioma que va a ser eliminado") @PathVariable int id) {
 		Language l = languageService.searchById(id);
 		languageService.delete(l);
 		return "redirect:/languages/languageList";

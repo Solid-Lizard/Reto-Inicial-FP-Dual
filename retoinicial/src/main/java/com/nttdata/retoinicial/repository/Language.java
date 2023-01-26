@@ -13,9 +13,6 @@ import javax.persistence.Table;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-// IMPORTS //
-
-
 /**
  * 
  * Mapeo de la entidad "idioma"
@@ -23,7 +20,6 @@ import io.swagger.annotations.ApiModelProperty;
  * @author Santiago López
  *
  */
-
 @Entity
 @Table (name="Languages")
 @ApiModel(description = "Información del idioma")

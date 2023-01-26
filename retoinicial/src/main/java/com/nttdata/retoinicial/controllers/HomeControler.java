@@ -1,6 +1,6 @@
 package com.nttdata.retoinicial.controllers;
 
-// IMPORT //
+// IMPORTS //
 import org.springframework.beans.factory.annotation.Autowired;
 // IMPORTS //
 import org.springframework.stereotype.Controller;
@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.nttdata.retoinicial.repository.Language;
 import com.nttdata.retoinicial.services.LanguageManagementServiceI;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
 /**
  * 
  * Controlador de bienvenida
@@ -22,6 +25,12 @@ import com.nttdata.retoinicial.services.LanguageManagementServiceI;
 @Controller
 @RequestMapping("/home")
 public class HomeControler {
+	// ATRIBUTOS //
+	/**
+	 * 
+	 * Servicio de gestión de idiomas
+	 * 
+	 */
 	@Autowired
 	LanguageManagementServiceI languageService;
 	
@@ -35,8 +44,11 @@ public class HomeControler {
 	 * @return String - Mensaje
 	 * 
 	 */
+	@ApiOperation(
+			value = "Devuelve el mensaje de 'hola mundo' traducido a un idioma que se buscará en base a un parámetro pasado por el usuario"
+			)
 	@GetMapping("/helloWorld")
-	public @ResponseBody String helloWorld( @RequestParam("language") String language ) {
+	public @ResponseBody String helloWorld( @ApiParam("Nombre del idioma que pasará el usuario como parámetro") @RequestParam("language") String language ) {
 		Language l = languageService.searchByName(language);
 		
 		String mssg = "Lo sentimos, no tenemos ese idioma en nuestra base de datos";
@@ -55,6 +67,9 @@ public class HomeControler {
 	 * @return String - Mensaje
 	 * 
 	 */
+	@ApiOperation(
+			value = "Muestra el mensaje de bienvenida a la aplicación"
+			)
 	@GetMapping("/*")
 	public @ResponseBody String welcome() {
 		return "¡Bienvenido/a!, si quieres ver el 'hola mundo', dirígete a /helloWorld ";
