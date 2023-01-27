@@ -14,7 +14,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.springframework.context.annotation.Bean;
 
-import com.nttdata.retoinicial.repository.Language;
+import com.nttdata.retoinicial.dto.LanguageDTO;
+
 import com.nttdata.retoinicial.services.LanguageManagementServiceI;
 
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -71,34 +72,34 @@ public class RetoinicialApplication implements CommandLineRunner{
 		
 		log.info("--INICIANDO CREACIÓN DE IDIOMAS--");
 		// Creación de idiomas //
-		Language l1 = new Language();
-		l1.setId(1);
-		l1.setMessage("Hallo Welt!");
-		l1.setName("GER");
+		LanguageDTO dto1 = new LanguageDTO();
+		dto1.setId(1);
+		dto1.setMessage("Hallo Welt!");
+		dto1.setName("GER");
 		
-		Language l2 = new Language();
-		l2.setId(2);
-		l2.setMessage("¡Hola Mundo!");
-		l2.setName("ESP");
+		LanguageDTO dto2 = new LanguageDTO();
+		dto2.setId(2);
+		dto2.setMessage("¡Hola Mundo!");
+		dto2.setName("ESP");
 		
-		Language l3 = new Language();
-		l3.setId(3);
-		l3.setMessage("Hello World!");
-		l3.setName("ENG");
+		LanguageDTO dto3 = new LanguageDTO();
+		dto3.setId(3);
+		dto3.setMessage("Hello World!");
+		dto3.setName("ENG");
 		
-		Language l4 = new Language();
-		l4.setId(4);
-		l4.setMessage("Ciao mondo!");
-		l4.setName("ITA");
+		LanguageDTO dto4 = new LanguageDTO();
+		dto4.setId(4);
+		dto4.setMessage("Ciao mondo!");
+		dto4.setName("ITA");
 		
-		log.info("--IDIOMAS CREADOS SATISFACTORIAMENTE--");
-
+		log.info("--IDIOMAS CREADOS SATISFACTORIAMENTE--");		
+		
 		// Consumimos el servicio de gestión de idiomas //
 		log.info("--CONSUMIENDO SERVICIO DE GESTIÓN DE IDIOMAS PARA ALMACENARLOS EN LA BDD--");
-		languageService.create(l1);	
-		languageService.create(l2);
-		languageService.create(l3);
-		languageService.create(l4);
+		languageService.create(dto1);	
+		languageService.create(dto2);
+		languageService.create(dto3);
+		languageService.create(dto4);
 		log.info("--SERVICIO DE GESTIÓN DE IDIMAS CONSUMIDO SATISFACTORIAMENTE--");
 		
 	}

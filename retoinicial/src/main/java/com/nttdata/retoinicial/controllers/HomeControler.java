@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.nttdata.retoinicial.repository.Language;
+import com.nttdata.retoinicial.dto.LanguageDTO;
 import com.nttdata.retoinicial.services.LanguageManagementServiceI;
 
 import io.swagger.annotations.ApiOperation;
@@ -63,7 +63,7 @@ public class HomeControler {
 		log.info("Mostrando mensaje de saludo a la aplicación");
 		
 		log.info("Consumiendo servicio de búsqueda de idiomas");		
-		Language l = languageService.searchByName(language);		
+		LanguageDTO l = languageService.searchByName(language);		
 		log.info("Servicio consumido satisfactoriamente");
 		
 		String mssg = "Lo sentimos, no tenemos ese idioma en nuestra base de datos";

@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nttdata.retoinicial.dto.LanguageDTO;
+import com.nttdata.retoinicial.mappers.LanguageMapper;
 import com.nttdata.retoinicial.repository.Language;
 import com.nttdata.retoinicial.repository.LanguageRepositoryI;
 
@@ -22,6 +24,10 @@ import com.nttdata.retoinicial.repository.LanguageRepositoryI;
  */
 @Service
 public class LanguageManagementServiceImpl implements LanguageManagementServiceI{
+	private static final String NO_SE_HA_ENCONTRADO_EL_IDIOMA_DESEADO = "No se ha encontrado el idioma deseado";
+
+	private static final String IDIOMA_ENCONTRADO_SATISFACTORIAMENTE = "Idioma encontrado satisfactoriamente";
+
 	// ATRIBUTOS //
 	/**
 	 * 
@@ -41,74 +47,84 @@ public class LanguageManagementServiceImpl implements LanguageManagementServiceI
 	
 	// ATRIBUTOS //
 	@Override
-	public void create(Language l) {
+	public void create(LanguageDTO l) {
 		log.info("Almacenando idioma en la BDD: {}", l);
-		languageRepo.save(l);
+		Language languageEntity = LanguageMapper.INSTANCE.languageDtoToLanguage(l);
+		
+		languageRepo.save(languageEntity);
 		log.info("Idioma almacenado satisfactoriamente");
 		
 	}
 
 	@Override
-	public Language searchByName(String name) {
+	public LanguageDTO searchByName(String name) {
 		log.info("Buscando idioma por nombre: {}", name);
+		
 		if (languageRepo.findByName(name) != null) {
-			log.info("Idioma encontrado satisfactoriamente");
+			log.info(IDIOMA_ENCONTRADO_SATISFACTORIAMENTE);
 			
 		} else {
-			log.error("No se ha encontrado el idioma deseado");
+			log.error(NO_SE_HA_ENCONTRADO_EL_IDIOMA_DESEADO);
 			
 		}
 		
-		return languageRepo.findByName(name);
+		return LanguageMapper.INSTANCE.languageToLanguageDto(languageRepo.findByName(name));
 	}
 
 	@Override
-	public Language searchByMessage(String mssg) {
+	public LanguageDTO searchByMessage(String mssg) {
 		log.info("Buscando idioma por mensaje de saludo: {}", mssg);
 		if (languageRepo.findByMessage(mssg) != null) {
-			log.info("Idioma encontrado satisfactoriamente");
+			log.info(IDIOMA_ENCONTRADO_SATISFACTORIAMENTE);
 			
 		} else {
-			log.error("No se ha encontrado el idioma deseado");
+			log.error(NO_SE_HA_ENCONTRADO_EL_IDIOMA_DESEADO);
 			
 		}
 		
-		return languageRepo.findByMessage(mssg);
+		return  LanguageMapper.INSTANCE.languageToLanguageDto(languageRepo.findByMessage(mssg));
 	}
 
 	@Override
-	public Language searchById(int id) {
+	public LanguageDTO searchById(int id) {
 		log.info("Buscando idioma por ID: {}", id);
 		
 		if (languageRepo.findById(id) != null) {
-			log.info("Idioma encontrado satisfactoriamente");
+			log.info(IDIOMA_ENCONTRADO_SATISFACTORIAMENTE);
 			
 		} else {
-			log.error("No se ha encontrado el idioma deseado");
+			log.error(NO_SE_HA_ENCONTRADO_EL_IDIOMA_DESEADO);
 			
 		}
 		
-		return languageRepo.findById(id);
+		return  LanguageMapper.INSTANCE.languageToLanguageDto(languageRepo.findById(id));
 	}
 
 	@Override
-	public List<Language> searchAll() {
+	public List<LanguageDTO> searchAll() {
 		log.info("Buscando todos los idiomas");
-		return languageRepo.findAll();
+		List<Language> languageList = languageRepo.findAll();
+		
+		return  LanguageMapper.INSTANCE.languagesToLanguageDto(languageList);
 	}
 
 	@Override
-	public void update(Language l) {
+	public void update(LanguageDTO l) {
 		log.info("Actualizando idioma");
-		languageRepo.save(l);
+		
+		Language languageEntity = LanguageMapper.INSTANCE.languageDtoToLanguage(l);
+		
+		languageRepo.save(languageEntity);
 		log.info("Idioma actualizado satisfactoriamente");
+	
 		
 	}
 
 	@Override
-	public void delete(Language l) {
+	public void delete(LanguageDTO l) {
 		log.info("Eliminando idioma de la BDD");
-		languageRepo.delete(l);
+		Language languageEntity = LanguageMapper.INSTANCE.languageDtoToLanguage(l);
+		languageRepo.delete(languageEntity);
 		log.info("Idioma eliminado satisfactoriamente");
 		
 	}

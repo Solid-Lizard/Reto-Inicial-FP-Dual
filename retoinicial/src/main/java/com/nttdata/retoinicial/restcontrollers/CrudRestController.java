@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nttdata.retoinicial.repository.Language;
+import com.nttdata.retoinicial.dto.LanguageDTO;
+
 import com.nttdata.retoinicial.services.LanguageManagementServiceI;
 
 import io.swagger.annotations.ApiOperation;
@@ -31,6 +32,10 @@ import io.swagger.annotations.ApiParam;
 @RestController
 @RequestMapping("/rest")
 public class CrudRestController {
+	private static final String CONSUMIENDO_SERVICIO_DE_BÚSQUEDA_DE_IDIOMAS = "Consumiendo servicio de búsqueda de idiomas";
+
+	private static final String SERVICIO_CONSUMIDO_SATISFACTORIAMENTE = "Servicio consumido satisfactoriamente";
+
 	// ATRIBUTOS //
 	/**
 	 * 
@@ -65,10 +70,10 @@ public class CrudRestController {
 			)
 	
 	@PostMapping("/languages")
-	public Language newLanguage(@ApiParam (value = "Idioma que se almacenará en la BDD") @RequestBody Language l) {
+	public LanguageDTO newLanguage(@ApiParam (value = "Idioma que se almacenará en la BDD") @RequestBody LanguageDTO l) {
 		log.info("Consumiendo servicio de creación de clientes");
 		languageService.create(l);
-		log.info("Servicio consumido satisfactoriamente");
+		log.info(SERVICIO_CONSUMIDO_SATISFACTORIAMENTE);
 		
 		return l;
 	}
@@ -88,8 +93,8 @@ public class CrudRestController {
 			)
 	
 	@GetMapping("/languages")
-	public List<Language> all() {
-		log.info("Consumiendo servicio de búsqueda de idiomas");
+	public List<LanguageDTO> all() {
+		log.info(CONSUMIENDO_SERVICIO_DE_BÚSQUEDA_DE_IDIOMAS);
 		return languageService.searchAll();
 	}
 	
@@ -108,8 +113,8 @@ public class CrudRestController {
 			)
 	
 	@GetMapping("/searchById/{id}")
-	public Language findById( @ApiParam (value = "Id del idioma deseado")  @PathVariable int id) {
-		log.info("Consumiendo servicio de búsqueda de idiomas");
+	public LanguageDTO findById( @ApiParam (value = "Id del idioma deseado")  @PathVariable int id) {
+		log.info(CONSUMIENDO_SERVICIO_DE_BÚSQUEDA_DE_IDIOMAS);
 		return languageService.searchById(id);
 	}
 	
@@ -128,8 +133,8 @@ public class CrudRestController {
 			)
 	
 	@GetMapping("/searchByMssg/{mssg}")
-	public Language findByMssg(@ApiParam (value = "Mensaje de saludo del idioma deseado") @PathVariable String mssg) {
-		log.info("Consumiendo servicio de búsqueda de idiomas");
+	public LanguageDTO findByMssg(@ApiParam (value = "Mensaje de saludo del idioma deseado") @PathVariable String mssg) {
+		log.info(CONSUMIENDO_SERVICIO_DE_BÚSQUEDA_DE_IDIOMAS);
 		return languageService.searchByMessage(mssg);
 	}
 	
@@ -151,13 +156,13 @@ public class CrudRestController {
 			)
 	
 	@PutMapping("/updateLanguage/{id}")
-	public Language updateLanguage(@ApiParam (value = "Idioma con los datos actualizados") @RequestBody Language l,
+	public LanguageDTO updateLanguage(@ApiParam (value = "Idioma con los datos actualizados") @RequestBody LanguageDTO l,
 			@ApiParam (value = "ID del idioma que queremos modificar") @PathVariable int id) {
 		
 		// Busca el idioma a actualizar en la BDD
-		log.info("Consumiendo servicio de búsqueda de idiomas");
-		Language l2 = languageService.searchById(id);
-		log.info("Servicio consumido satisfactoriamente");
+		log.info(CONSUMIENDO_SERVICIO_DE_BÚSQUEDA_DE_IDIOMAS);
+		LanguageDTO l2 = languageService.searchById(id);
+		log.info(SERVICIO_CONSUMIDO_SATISFACTORIAMENTE);
 		
 		if (l2 != null) {
 			// Si se ha encontrado ese idioma, se actualizan sus datos
@@ -168,7 +173,7 @@ public class CrudRestController {
 			
 			log.info("Consumiendo servicio de actualización de idioma");
 			languageService.update(l2);
-			log.info("Servicio consumido satisfactoriamente");
+			log.info(SERVICIO_CONSUMIDO_SATISFACTORIAMENTE);
 			
 		} else {
 			// Si no se ha encontrado el idioma, se almacena el idioma dado en la BDD
@@ -177,7 +182,7 @@ public class CrudRestController {
 			
 			log.info("Consumiendo servicio de creación de idiomas");
 			languageService.create(l2);
-			log.info("Servicio consumido satisfactoriamente");
+			log.info(SERVICIO_CONSUMIDO_SATISFACTORIAMENTE);
 			
 		}
 		

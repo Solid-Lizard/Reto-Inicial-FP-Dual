@@ -3,7 +3,7 @@ package com.nttdata.retoinicial.services;
 // IMPORTS //
 import java.util.List;
 
-import com.nttdata.retoinicial.repository.Language;
+import com.nttdata.retoinicial.dto.LanguageDTO;
 
 /**
  * 
@@ -16,6 +16,7 @@ import com.nttdata.retoinicial.repository.Language;
  */
 public interface LanguageManagementServiceI {
 	// MÉTODOS //
+	// CRUD //
 	/**
 	 * 
 	 * Almacena un idioma pasado por parámetro en la BDD
@@ -23,7 +24,7 @@ public interface LanguageManagementServiceI {
 	 * @param l - Idioma
 	 * 
 	 */
-	public void create(Language l);
+	public void create(LanguageDTO l);
 	
 	/**
 	 * 
@@ -35,7 +36,7 @@ public interface LanguageManagementServiceI {
 	 * @return Language
 	 * 
 	 */
-	public Language searchByName (String name);
+	public LanguageDTO searchByName (String name);
 	
 	/**
 	 * 
@@ -47,7 +48,7 @@ public interface LanguageManagementServiceI {
 	 * @return Language
 	 * 
 	 */
-	public Language searchByMessage (String mssg);
+	public LanguageDTO searchByMessage (String mssg);
 	
 	/**
 	 * 
@@ -59,7 +60,7 @@ public interface LanguageManagementServiceI {
 	 * @return Language
 	 * 
 	 */
-	public Language searchById(int Id);
+	public LanguageDTO searchById(int id);
 	
 	/**
 	 * 
@@ -68,7 +69,7 @@ public interface LanguageManagementServiceI {
 	 * @return List - Lista de idiomas
 	 * 
 	 */
-	public List<Language> searchAll();
+	public List<LanguageDTO> searchAll();
 	
 	/**
 	 * 
@@ -77,7 +78,7 @@ public interface LanguageManagementServiceI {
 	 * @param l - Idioma
 	 * 
 	 */
-	public void update (Language l);
+	public void update (LanguageDTO l);
 	
 	/**
 	 * 
@@ -86,5 +87,6 @@ public interface LanguageManagementServiceI {
 	 * @param l - Idioma
 	 * 
 	 */
-	public void delete (Language l);
+	public void delete (LanguageDTO l);
+	
 }

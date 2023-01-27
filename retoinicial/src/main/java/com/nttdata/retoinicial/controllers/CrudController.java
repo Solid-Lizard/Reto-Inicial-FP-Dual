@@ -1,8 +1,9 @@
 package com.nttdata.retoinicial.controllers;
 
+//IMPORTS //
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-// IMPORTS //
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.nttdata.retoinicial.dto.LanguageDTO;
 import com.nttdata.retoinicial.repository.Language;
 import com.nttdata.retoinicial.services.LanguageManagementServiceI;
 
@@ -31,6 +33,8 @@ import io.swagger.annotations.ApiParam;
 @Controller
 @RequestMapping("/languages")
 public class CrudController {
+	private static final String REDIRECT_LANGUAGES_LANGUAGE_LIST = "redirect:/languages/languageList";
+
 	// ATRIBUTOS //
 	/**
 	 * 
@@ -136,12 +140,12 @@ public class CrudController {
 	
 	@PostMapping("/editLanguage/{id}")
 	public String editLanguage(@ApiParam("Id del idioma que se modificará") @PathVariable int id,
-			@ModelAttribute("language") Language language,
+			@ModelAttribute("language") LanguageDTO language,
 			Model model) {
 		log.info("Consumiendo servicio de actualización de idiomas");
 		
 		// Recuperamos el idioma de la BDD, modificamos sus parámetros
-		Language l = languageService.searchById(id);
+		LanguageDTO l = languageService.searchById(id);
 		l.setId(language.getId());
 		l.setName(language.getName());
 		l.setMessage(language.getMessage());
@@ -151,7 +155,7 @@ public class CrudController {
 		
 		log.info("Servicio consumido satisfactoriamente, mostrando vista: LanaguagesList.html");
 				
-		return "redirect:/languages/languageList";
+		return REDIRECT_LANGUAGES_LANGUAGE_LIST;
 		
 	}
 	
@@ -169,14 +173,14 @@ public class CrudController {
 			)
 	
 	@PostMapping("/saveLanguage")
-	public String saveLanguage (@ApiParam("Idioma que se va a almacenar") @ModelAttribute("language") Language language) {
+	public String saveLanguage (@ApiParam("Idioma que se va a almacenar") @ModelAttribute("language") LanguageDTO language) {
 		log.info("Consumiendo servicio de creación de idiomas");
 		
 		languageService.create(language);
 		
 		log.info("Servicio consumido satisfactoriamente, mostrando vista: LanguagesList.html");
 		
-		return "redirect:/languages/languageList";
+		return REDIRECT_LANGUAGES_LANGUAGE_LIST;
 	}
 	
 	/**
@@ -196,13 +200,13 @@ public class CrudController {
 	public String deleteLanguage(@ApiParam("ID del idioma que va a ser eliminado") @PathVariable int id) {
 		log.info("Consumiendo servicios de búsqueda y eliminación de idiomas");
 		
-		Language l = languageService.searchById(id);
+		LanguageDTO l = languageService.searchById(id);
 		
 		languageService.delete(l);
 		
 		log.info("Servicios consumidos satisfactoriamente, mostrando vista: LanguagesList.html");
 		
-		return "redirect:/languages/languageList";
+		return REDIRECT_LANGUAGES_LANGUAGE_LIST;
 	}
 
 }

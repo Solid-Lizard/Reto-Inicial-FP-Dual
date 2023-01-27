@@ -18,7 +18,11 @@
 	
 	<!-- Propiedades del proyecto -->
 	<properties>
+		<!-- Versión de java -->
 		<java.version>17</java.version>
+		
+		<!-- Versión de map struct -->
+		<org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
 	</properties>
 	
 	<!-- Dependencias del proyecto -->
@@ -28,6 +32,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>
 		</dependency>
+		
 		<!-- Dependencias swagger-->
 		<dependency>
 	   	 	<groupId>io.springfox</groupId>
@@ -56,7 +61,7 @@
 		</dependency>
 
 
-
+		<!-- Dependencias base -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -65,6 +70,18 @@
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 		
 		<!-- Dependencias para thymeleaf -->
@@ -87,23 +104,19 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
 			<version>8.0.32</version>
 		</dependency>
 		
+		<!-- Dependencias para mapstruct -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
+        	<groupId>org.mapstruct</groupId>
+        	<artifactId>mapstruct</artifactId>
+        	<version>${org.mapstruct.version}</version>
+    	</dependency>
 
 	</dependencies>
 
@@ -119,6 +132,26 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>        
             </plugin>
+            
+            <!-- Pugin mapstruct -->
+            <plugin>
+            	<groupId>org.apache.maven.plugins</groupId>
+            	
+            	<artifactId>maven-compiler-plugin</artifactId>            	
+            	
+            	<configuration>
+                	<source>17</source> <!-- depending on your project -->
+                	<target>17</target> <!-- depending on your project -->
+                	<annotationProcessorPaths>
+                    	<path>
+                    	    <groupId>org.mapstruct</groupId>
+                	        <artifactId>mapstruct-processor</artifactId>
+            	            <version>${org.mapstruct.version}</version>
+        	            </path>
+    	                <!-- other annotation processors -->
+	                </annotationProcessorPaths>
+            	</configuration>
+        	</plugin>
 			
 		</plugins>
 		
