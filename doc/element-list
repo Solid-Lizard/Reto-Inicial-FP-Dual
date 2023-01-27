@@ -1,0 +1,7 @@
+com.nttdata.retoinicial
+com.nttdata.retoinicial.controllers
+com.nttdata.retoinicial.dto
+com.nttdata.retoinicial.mappers
+com.nttdata.retoinicial.repository
+com.nttdata.retoinicial.restcontrollers
+com.nttdata.retoinicial.services
