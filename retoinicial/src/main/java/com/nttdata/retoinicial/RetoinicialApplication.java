@@ -1,13 +1,17 @@
 package com.nttdata.retoinicial;
 
+// IMPORTS //
 import java.util.Collections;
 
-//IMPORTS //
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import org.springframework.context.annotation.Bean;
 
 import com.nttdata.retoinicial.repository.Language;
@@ -27,10 +31,18 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @author Santiago Lopez Arredondo
  *
  */
+
 @SpringBootApplication
 @EnableSwagger2
 public class RetoinicialApplication implements CommandLineRunner{
 	// ATRIBUTOS //
+	/**
+	 * 
+	 * LOGGER
+	 * 
+	 */
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	
 	/**
 	 * 
 	 * Servicio de gestion de idiomas
@@ -49,12 +61,15 @@ public class RetoinicialApplication implements CommandLineRunner{
 	 * @param args
 	 * 
 	 */
-	public static void main(String[] args) {		
+	public static void main(String[] args) {	
 		SpringApplication.run(RetoinicialApplication.class, args);
 	}
 
 	@Override
-	public void run(String... args) throws Exception {		
+	public void run(String... args) throws Exception {	
+		log.trace("--INICIO DE LA APLICACIÓN--");
+		
+		log.info("--INICIANDO CREACIÓN DE IDIOMAS--");
 		// Creación de idiomas //
 		Language l1 = new Language();
 		l1.setId(1);
@@ -75,47 +90,44 @@ public class RetoinicialApplication implements CommandLineRunner{
 		l4.setId(4);
 		l4.setMessage("Ciao mondo!");
 		l4.setName("ITA");
+		
+		log.info("--IDIOMAS CREADOS SATISFACTORIAMENTE--");
 
 		// Consumimos el servicio de gestión de idiomas //
+		log.info("--CONSUMIENDO SERVICIO DE GESTIÓN DE IDIOMAS PARA ALMACENARLOS EN LA BDD--");
 		languageService.create(l1);	
 		languageService.create(l2);
 		languageService.create(l3);
 		languageService.create(l4);
+		log.info("--SERVICIO DE GESTIÓN DE IDIMAS CONSUMIDO SATISFACTORIAMENTE--");
 		
 	}
 	
-	/*
-	 * Un docket es una instancia de un objeto de este tipo
-	 * que contiene todas las configuraciones que swagger va a emplear,
-	 * siempre que tengamos un Bean de este tipo, podremos configurar
-	 * dentro de esta clase todos los elementos de swagger.
+	/**
+	 * 
+	 * Docket de configuración de springfox
+	 * 
+	 * @return Docket - Objeto que suministra la configuración de springfox
+	 * 
 	 */
-	
 	@Bean
 	public Docket swaggerConfiguration() {
-		// El método SELECT devuelve un objeto de tipo ApiSelectorBuilder
-		// Este constructor tiene métodos que nos permite realizar la configuración
-		// de swagger
 		
-		/*
-		 * Una vez hemos realizado la configuración, llamamos al método "Build" para que
-		 * construya un objeto de tipo Docket con la configuración deseada
-		 */
-		
+		// Definimos la configuración de swagger a través  de la clase
+		// API Selector builder
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				// Esto nos permite seleccionar que controladores van a documentarse
-				// en base a su url, usamos "PathSelectors" para definir el patrón que
-				// debe seguir la URL de los controladores para no ser excluida
-//				.paths(PathSelectors.ant("/home/*"))
-				
-				// Este método excluye los controladores que no se encuentran debajo del paquete elegido
-				// código
 				.apis(RequestHandlerSelectors.basePackage("com.nttdata"))
 				.build()
 				.apiInfo(apiDetails());
 	}
 	
-	// Creamos un método que define los metadatos del proyecto //
+	/**
+	 * 
+	 * Asigna los metadatos de la API
+	 * 
+	 * @return ApiInfo - Objeto que contiene los metadatos de la API
+	 * 
+	 */
 	private ApiInfo apiDetails() {
 		return new ApiInfo(
 				"Reto Inicial", 
@@ -127,5 +139,7 @@ public class RetoinicialApplication implements CommandLineRunner{
 				"https://github.com/Solid-Lizard/Reto-Inicial-FP-Dual", 
 				Collections.emptyList());
 	}
+	
+	
 
 }

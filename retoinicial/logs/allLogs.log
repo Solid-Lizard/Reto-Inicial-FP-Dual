@@ -1,0 +1,103 @@
+2023-01-27 10:11:42 -  [7040] - [restartedMain] INFO  - Starting RetoinicialApplication using Java 17.0.5 on SVQ-65DG3M2 with PID 17116 (C:\Users\sloparre\OneDrive - NTT DATA EMEAL\Escritorio\Espacios de trabajo\ESPACIO1\retoinicial\target\classes started by sloparre in C:\Users\sloparre\OneDrive - NTT DATA EMEAL\Escritorio\Espacios de trabajo\ESPACIO1\retoinicial)
+2023-01-27 10:11:42 -  [7044] - [restartedMain] DEBUG - Running with Spring Boot v2.5.8, Spring v5.3.14
+2023-01-27 10:11:42 -  [7044] - [restartedMain] INFO  - No active profile set, falling back to default profiles: default
+2023-01-27 10:11:57 -  [21844] - [restartedMain] INFO  - Started RetoinicialApplication in 21.021 seconds (JVM running for 22.232)
+2023-01-27 10:11:57 -  [21957] - [restartedMain] INFO  - --INICIANDO CREACIÓN DE IDIOMAS--
+2023-01-27 10:11:57 -  [21967] - [restartedMain] INFO  - --IDIOMAS CREADOS SATISFACTORIAMENTE--
+2023-01-27 10:11:57 -  [21968] - [restartedMain] INFO  - --CONSUMIENDO SERVICIO DE GESTIÓN DE IDIOMAS PARA ALMACENARLOS EN LA BDD--
+2023-01-27 10:11:57 -  [21968] - [restartedMain] INFO  - Almacenando idioma en la BDD: Language [name=GER, message=Hallo Welt!, id=1]
+2023-01-27 10:11:57 -  [22134] - [restartedMain] INFO  - Idioma almacenado satisfactoriamente
+2023-01-27 10:11:57 -  [22134] - [restartedMain] INFO  - Almacenando idioma en la BDD: Language [name=ESP, message=¡Hola Mundo!, id=2]
+2023-01-27 10:11:57 -  [22138] - [restartedMain] INFO  - Idioma almacenado satisfactoriamente
+2023-01-27 10:11:57 -  [22138] - [restartedMain] INFO  - Almacenando idioma en la BDD: Language [name=ENG, message=Hello World!, id=3]
+2023-01-27 10:11:57 -  [22143] - [restartedMain] INFO  - Idioma almacenado satisfactoriamente
+2023-01-27 10:11:57 -  [22144] - [restartedMain] INFO  - Almacenando idioma en la BDD: Language [name=ITA, message=Ciao mondo!, id=4]
+2023-01-27 10:11:57 -  [22147] - [restartedMain] INFO  - Idioma almacenado satisfactoriamente
+2023-01-27 10:11:57 -  [22147] - [restartedMain] INFO  - --SERVICIO DE GESTIÓN DE IDIMAS CONSUMIDO SATISFACTORIAMENTE--
+2023-01-27 10:12:07 -  [32232] - [http-nio-8080-exec-3] INFO  - Mostrando vista: LanguageList.html
+2023-01-27 10:12:07 -  [32232] - [http-nio-8080-exec-3] INFO  - Buscando todos los idiomas
+2023-01-27 10:12:15 -  [39915] - [http-nio-8080-exec-4] INFO  - Mostrando vista: newLanguage.html
+2023-01-27 10:12:37 -  [61907] - [http-nio-8080-exec-5] INFO  - Mostrando vista: newLanguage.html
+2023-01-27 10:12:55 -  [80283] - [http-nio-8080-exec-6] INFO  - Consumiendo servicio de creación de idiomas
+2023-01-27 10:12:55 -  [80283] - [http-nio-8080-exec-6] INFO  - Almacenando idioma en la BDD: Language [name=PORT, message=Ola mundo!, id=0]
+2023-01-27 10:12:55 -  [80286] - [http-nio-8080-exec-6] INFO  - Idioma almacenado satisfactoriamente
+2023-01-27 10:12:55 -  [80287] - [http-nio-8080-exec-6] INFO  - Servicio consumido satisfactoriamente, mostrando vista: LanguagesList.html
+2023-01-27 10:12:55 -  [80297] - [http-nio-8080-exec-7] INFO  - Mostrando vista: LanguageList.html
+2023-01-27 10:12:55 -  [80298] - [http-nio-8080-exec-7] INFO  - Buscando todos los idiomas
+2023-01-27 10:13:05 -  [90391] - [http-nio-8080-exec-9] INFO  - Mostrando vista: update_language.html
+2023-01-27 10:13:05 -  [90392] - [http-nio-8080-exec-9] INFO  - Buscando idioma por ID: 2
+2023-01-27 10:13:05 -  [90405] - [http-nio-8080-exec-9] INFO  - Idioma encontrado satisfactoriamente
+2023-01-27 10:13:13 -  [98581] - [http-nio-8080-exec-10] INFO  - Consumiendo servicio de actualización de idiomas
+2023-01-27 10:13:13 -  [98581] - [http-nio-8080-exec-10] INFO  - Buscando idioma por ID: 2
+2023-01-27 10:13:13 -  [98584] - [http-nio-8080-exec-10] INFO  - Idioma encontrado satisfactoriamente
+2023-01-27 10:13:13 -  [98585] - [http-nio-8080-exec-10] INFO  - Actualizando idioma
+2023-01-27 10:13:13 -  [98592] - [http-nio-8080-exec-10] INFO  - Idioma actualizado satisfactoriamente
+2023-01-27 10:13:13 -  [98592] - [http-nio-8080-exec-10] INFO  - Servicio consumido satisfactoriamente, mostrando vista: LanaguagesList.html
+2023-01-27 10:13:13 -  [98600] - [http-nio-8080-exec-1] INFO  - Mostrando vista: LanguageList.html
+2023-01-27 10:13:13 -  [98601] - [http-nio-8080-exec-1] INFO  - Buscando todos los idiomas
+2023-01-27 10:13:26 -  [111125] - [http-nio-8080-exec-6] INFO  - Consumiendo servicio de búsqueda de idiomas
+2023-01-27 10:13:26 -  [111125] - [http-nio-8080-exec-6] INFO  - Buscando todos los idiomas
+2023-01-27 10:13:41 -  [126370] - [http-nio-8080-exec-8] INFO  - Mostrando vista: LanguageList.html
+2023-01-27 10:13:41 -  [126370] - [http-nio-8080-exec-8] INFO  - Buscando todos los idiomas
+2023-01-27 10:13:45 -  [130626] - [http-nio-8080-exec-9] INFO  - Consumiendo servicios de búsqueda y eliminación de idiomas
+2023-01-27 10:13:45 -  [130626] - [http-nio-8080-exec-9] INFO  - Buscando idioma por ID: 4
+2023-01-27 10:13:45 -  [130629] - [http-nio-8080-exec-9] INFO  - Idioma encontrado satisfactoriamente
+2023-01-27 10:13:45 -  [130630] - [http-nio-8080-exec-9] INFO  - Eliminando idioma de la BDD
+2023-01-27 10:13:45 -  [130643] - [http-nio-8080-exec-9] INFO  - Idioma eliminado satisfactoriamente
+2023-01-27 10:13:45 -  [130643] - [http-nio-8080-exec-9] INFO  - Servicios consumidos satisfactoriamente, mostrando vista: LanguagesList.html
+2023-01-27 10:13:45 -  [130652] - [http-nio-8080-exec-10] INFO  - Mostrando vista: LanguageList.html
+2023-01-27 10:13:45 -  [130653] - [http-nio-8080-exec-10] INFO  - Buscando todos los idiomas
+2023-01-27 10:13:50 -  [135192] - [http-nio-8080-exec-1] INFO  - Consumiendo servicios de búsqueda y eliminación de idiomas
+2023-01-27 10:13:50 -  [135192] - [http-nio-8080-exec-1] INFO  - Buscando idioma por ID: 2
+2023-01-27 10:13:50 -  [135196] - [http-nio-8080-exec-1] INFO  - Idioma encontrado satisfactoriamente
+2023-01-27 10:13:50 -  [135198] - [http-nio-8080-exec-1] INFO  - Eliminando idioma de la BDD
+2023-01-27 10:13:50 -  [135200] - [http-nio-8080-exec-1] INFO  - Idioma eliminado satisfactoriamente
+2023-01-27 10:13:50 -  [135200] - [http-nio-8080-exec-1] INFO  - Servicios consumidos satisfactoriamente, mostrando vista: LanguagesList.html
+2023-01-27 10:13:50 -  [135206] - [http-nio-8080-exec-2] INFO  - Mostrando vista: LanguageList.html
+2023-01-27 10:13:50 -  [135206] - [http-nio-8080-exec-2] INFO  - Buscando todos los idiomas
+2023-01-27 10:13:51 -  [136236] - [http-nio-8080-exec-3] INFO  - Mostrando vista: update_language.html
+2023-01-27 10:13:51 -  [136237] - [http-nio-8080-exec-3] INFO  - Buscando idioma por ID: 5
+2023-01-27 10:13:51 -  [136240] - [http-nio-8080-exec-3] INFO  - Idioma encontrado satisfactoriamente
+2023-01-27 10:13:59 -  [144665] - [http-nio-8080-exec-4] INFO  - Mostrando vista: update_language.html
+2023-01-27 10:13:59 -  [144665] - [http-nio-8080-exec-4] INFO  - Buscando idioma por ID: 3
+2023-01-27 10:13:59 -  [144666] - [http-nio-8080-exec-4] INFO  - Idioma encontrado satisfactoriamente
+2023-01-27 10:14:05 -  [150341] - [http-nio-8080-exec-5] INFO  - Consumiendo servicio de actualización de idiomas
+2023-01-27 10:14:05 -  [150342] - [http-nio-8080-exec-5] INFO  - Buscando idioma por ID: 3
+2023-01-27 10:14:05 -  [150343] - [http-nio-8080-exec-5] INFO  - Idioma encontrado satisfactoriamente
+2023-01-27 10:14:05 -  [150344] - [http-nio-8080-exec-5] INFO  - Actualizando idioma
+2023-01-27 10:14:05 -  [150347] - [http-nio-8080-exec-5] INFO  - Idioma actualizado satisfactoriamente
+2023-01-27 10:14:05 -  [150347] - [http-nio-8080-exec-5] INFO  - Servicio consumido satisfactoriamente, mostrando vista: LanaguagesList.html
+2023-01-27 10:14:05 -  [150352] - [http-nio-8080-exec-6] INFO  - Mostrando vista: LanguageList.html
+2023-01-27 10:14:05 -  [150352] - [http-nio-8080-exec-6] INFO  - Buscando todos los idiomas
+2023-01-27 10:14:11 -  [155839] - [http-nio-8080-exec-8] INFO  - Consumiendo servicio de búsqueda de idiomas
+2023-01-27 10:14:11 -  [155839] - [http-nio-8080-exec-8] INFO  - Buscando todos los idiomas
+2023-01-27 10:14:46 -  [190919] - [http-nio-8080-exec-9] INFO  - Consumiendo servicios de búsqueda y eliminación de idiomas
+2023-01-27 10:14:46 -  [190919] - [http-nio-8080-exec-9] INFO  - Buscando idioma por ID: 1
+2023-01-27 10:14:46 -  [190921] - [http-nio-8080-exec-9] INFO  - Idioma encontrado satisfactoriamente
+2023-01-27 10:14:46 -  [190922] - [http-nio-8080-exec-9] INFO  - Eliminando idioma de la BDD
+2023-01-27 10:14:46 -  [190924] - [http-nio-8080-exec-9] INFO  - Idioma eliminado satisfactoriamente
+2023-01-27 10:14:46 -  [190925] - [http-nio-8080-exec-9] INFO  - Servicios consumidos satisfactoriamente
+2023-01-27 10:14:49 -  [194552] - [http-nio-8080-exec-10] INFO  - Mostrando vista: LanguageList.html
+2023-01-27 10:14:49 -  [194552] - [http-nio-8080-exec-10] INFO  - Buscando todos los idiomas
+2023-01-27 10:15:05 -  [210273] - [http-nio-8080-exec-1] INFO  - Consumiendo servicio de búsqueda de idiomas
+2023-01-27 10:15:05 -  [210273] - [http-nio-8080-exec-1] INFO  - Buscando todos los idiomas
+2023-01-27 10:15:45 -  [250281] - [http-nio-8080-exec-2] INFO  - Consumiendo servicio de creación de clientes
+2023-01-27 10:15:45 -  [250281] - [http-nio-8080-exec-2] INFO  - Almacenando idioma en la BDD: Language [name=Mensaje en ruso, message=RUSO, id=0]
+2023-01-27 10:15:45 -  [250282] - [http-nio-8080-exec-2] INFO  - Idioma almacenado satisfactoriamente
+2023-01-27 10:15:45 -  [250282] - [http-nio-8080-exec-2] INFO  - Servicio consumido satisfactoriamente
+2023-01-27 10:15:52 -  [256893] - [http-nio-8080-exec-4] INFO  - Consumiendo servicio de creación de clientes
+2023-01-27 10:15:52 -  [256893] - [http-nio-8080-exec-4] INFO  - Almacenando idioma en la BDD: Language [name=Mensaje en ruso, message=RUSO, id=0]
+2023-01-27 10:15:52 -  [256895] - [http-nio-8080-exec-4] INFO  - Idioma almacenado satisfactoriamente
+2023-01-27 10:15:52 -  [256896] - [http-nio-8080-exec-4] INFO  - Servicio consumido satisfactoriamente
+2023-01-27 10:15:54 -  [258800] - [http-nio-8080-exec-5] INFO  - Mostrando vista: LanguageList.html
+2023-01-27 10:15:54 -  [258800] - [http-nio-8080-exec-5] INFO  - Buscando todos los idiomas
+2023-01-27 10:15:56 -  [260984] - [http-nio-8080-exec-6] INFO  - Consumiendo servicios de búsqueda y eliminación de idiomas
+2023-01-27 10:15:56 -  [260984] - [http-nio-8080-exec-6] INFO  - Buscando idioma por ID: 6
+2023-01-27 10:15:56 -  [260987] - [http-nio-8080-exec-6] INFO  - Idioma encontrado satisfactoriamente
+2023-01-27 10:15:56 -  [260988] - [http-nio-8080-exec-6] INFO  - Eliminando idioma de la BDD
+2023-01-27 10:15:56 -  [260990] - [http-nio-8080-exec-6] INFO  - Idioma eliminado satisfactoriamente
+2023-01-27 10:15:56 -  [260990] - [http-nio-8080-exec-6] INFO  - Servicios consumidos satisfactoriamente, mostrando vista: LanguagesList.html
+2023-01-27 10:15:56 -  [260998] - [http-nio-8080-exec-7] INFO  - Mostrando vista: LanguageList.html
+2023-01-27 10:15:56 -  [260998] - [http-nio-8080-exec-7] INFO  - Buscando todos los idiomas
+2023-01-27 10:16:15 -  [280431] - [http-nio-8080-exec-8] INFO  - Mostrando saludo en el fichero .properties del repositorio github
+2023-01-27 10:16:18 -  [282705] - [http-nio-8080-exec-9] INFO  - Mostrando saludo en el fichero .properties del repositorio github

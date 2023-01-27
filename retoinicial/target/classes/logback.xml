@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+ 
+    <property name="LOGS" value="./logs" />
+ 
+ 	<!-- APPENDERS O TUBERÍAS -->
+ 	
+ 	<!-- Appender para la consola -->
+    <appender name="Console"
+        class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %-4relative [%thread] %-5level - %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+ 
+ 	<!-- Appender que vuelca todos los logs excepto los de error en el archivo ./logs/allLogs.log -->
+ 	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		 <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      		<level>ERROR</level>
+     	 	<onMatch>DENY</onMatch>
+      		<onMismatch>ACCEPT</onMismatch>
+    	</filter>
+    		
+	    <file>./logs/allLogs.log</file>
+	    <append>true</append>
+	    
+	    <immediateFlush>true</immediateFlush>
+	    
+	    
+	    <encoder>
+	      <pattern>%d{yyyy-MM-dd HH:mm:ss} -  [%-4relative] - [%thread] %-5level - %msg%n</pattern>
+	    </encoder>
+  	</appender>
+  	
+  	<!-- Appender que vuelca todos los de error en el archivo ./logs/errorLogs.log -->
+  	<appender name="ERRORSFILE" class="ch.qos.logback.core.FileAppender">
+	  	<filter class="ch.qos.logback.classic.filter.LevelFilter">
+      		<level>ERROR</level>
+     	 	<onMatch>ACCEPT</onMatch>
+      		<onMismatch>DENY</onMismatch>
+    	</filter>
+    	
+	    <file>./logs/errorLogs.log</file>
+	    <append>true</append>
+	    
+	    <immediateFlush>true</immediateFlush>
+	    
+	    
+	    <encoder>
+	      <pattern>%d{yyyy-MM-dd HH:mm:ss} -  [%-4relative] - [%thread] %-5level - %msg%n</pattern>
+	    </encoder>
+  	</appender>
+
+    <!-- Logea al nivel de "info" -->
+    <root level="INFO">
+        <appender-ref ref="Console" />
+    </root>
+     
+    <!-- Logea al nivel de DEBUG -->
+    <logger name="com.nttdata.retoinicial" level="DEBUG" additivity="false">
+        <appender-ref ref="FILE" /> 
+		<appender-ref ref="ERRORSFILE"/>
+    </logger>
+
+ 
+</configuration>
